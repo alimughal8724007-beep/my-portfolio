@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-out both;
+}
+
+@supports (animation-timeline: view()) {
+  .fade-in {
+    animation: fadeIn 1s linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-fade-up {
+  animation: fadeUp 3s ease-out both;
+}
+@supports (animation-timeline: view()) {
+  .scroll-fade-up {
+    animation: fadeUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+}
+html { scroll-behavior: smooth; }
+section { scroll-margin-top: 80px; }
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.bar-grow {
+  transform-origin: left;
+  animation: barGrow 1.5s ease-out both;
+}
+
+/* scroll karke Skills tak pahunchne par chalane ke liye (Chrome, Edge) */
+@supports (animation-timeline: view()) {
+  .bar-grow {
+    animation: barGrow linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+}
+@keyframes popUp {
+  0%   { opacity: 0; transform: scale(0.5); }
+  70%  { opacity: 1; transform: scale(1.08); }  /* thora bara ho kar */
+  100% { opacity: 1; transform: scale(1); }     /* phir apni jagah par */
+}
+
+.pop-up {
+  animation: popUp 0.8s ease-out backwards;
+}
+
+/* scroll karke screen par aate hi chalane ke liye (Chrome, Edge) */
+@supports (animation-timeline: view()) {
+  .pop-up {
+    animation: popUp linear backwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+}
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: 0 0 8px rgba(217, 70, 239, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 28px rgba(217, 70, 239, 0.9);
+  }
+}
+
+.border-blink {
+  animation: borderGlow 2s ease-in-out infinite;
+}
